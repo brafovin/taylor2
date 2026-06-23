@@ -1164,7 +1164,7 @@ export const clubs: Club[] = [
     members: 600,
     league: 'Verbandsliga',
     ageGroups: ['Bambini (U6, 4-5 J.)', 'F-Junioren (U8, 6-7 J.)', 'E-Junioren (U10, 8-9 J.)', 'D-Junioren (U12, 10-11 J.)', 'C-Junioren (U14, 12-13 J.)', 'Aktive Herren (19-29 J.)', 'Ü30 Herren', 'Ü40 Herren'],
-    colors: 'Blau & Weiß',
+    colors: 'Rot & Schwarz',
     description: 'Traditionsreicher Amateurverein aus Magdeburg mit langer Geschichte und engagierter Nachwuchsabteilung.',
   },
   {
