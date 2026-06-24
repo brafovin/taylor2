@@ -4,6 +4,7 @@ import { FilterPanel } from './components/FilterPanel';
 import { ClubCard } from './components/ClubCard';
 import { ClubModal } from './components/ClubModal';
 import { StatsBar } from './components/StatsBar';
+import { LandingPage } from './pages/LandingPage';
 import { clubs } from './data/clubs';
 import { leagueLevels } from './data/leagues';
 import type { AgeGroup, Bundesland, Club, LeagueLevel } from './types';
@@ -16,12 +17,17 @@ const SORTED_CLUBS = [...clubs].sort((a, b) => {
 });
 
 export default function App() {
+  const [page, setPage] = useState<'landing' | 'app'>('landing');
   const [search, setSearch] = useState('');
   const [selectedBundesland, setSelectedBundesland] = useState<Bundesland | ''>('');
   const [selectedLeague, setSelectedLeague] = useState<LeagueLevel | ''>('');
   const [selectedAgeGroups, setSelectedAgeGroups] = useState<AgeGroup[]>([]);
   const [selectedClub, setSelectedClub] = useState<Club | null>(null);
   const [filterOpen, setFilterOpen] = useState(false);
+
+  if (page === 'landing') {
+    return <LandingPage onStart={() => setPage('app')} />;
+  }
 
   const filtered = useMemo(() => {
     return SORTED_CLUBS.filter((c) => {
@@ -47,7 +53,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header />
+      <Header onHome={() => setPage('landing')} />
 
       <main className="max-w-7xl mx-auto px-4 py-6">
         <StatsBar allClubs={clubs} filteredClubs={filtered} />
